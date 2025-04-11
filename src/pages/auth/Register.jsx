@@ -15,13 +15,11 @@ const Register = () => {
     e.preventDefault();
     setError('');
 
-    // Validação dos campos
     if (!formData.email || !formData.password || !formData.nickname || !formData.dob) {
       setError('Todos os campos são obrigatórios');
       return;
     }
 
-    // Verifica se o e-mail já está cadastrado
     const users = JSON.parse(localStorage.getItem('users') || '[]');
     const emailExists = users.some(user => user.email === formData.email);
 
@@ -30,23 +28,19 @@ const Register = () => {
       return;
     }
 
-    // Armazena o novo usuário
     const newUser = {
       email: formData.email,
-      password: formData.password, // ⚠️ Em produção, use hash!
+      password: formData.password, 
       nickname: formData.nickname,
       dob: formData.dob,
     };
 
-    // Atualiza a lista de usuários
     const updatedUsers = [...users, newUser];
     localStorage.setItem('users', JSON.stringify(updatedUsers));
     
-    // Define o token e usuário ativo
     localStorage.setItem('token', 'token-gerado-' + Date.now());
     localStorage.setItem('user', JSON.stringify(newUser));
 
-    // Redireciona e FORÇA ATUALIZAÇÃO do estado de autenticação
     window.location.href = '/produtos';
   };
 

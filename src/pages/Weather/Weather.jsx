@@ -6,7 +6,6 @@ const Weather = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
-  // ⚠️ Chave exposta (apenas para desenvolvimento/local)
   const API_KEY = '2ac56d08e5542aacc46c608e07c24d6c';
   const CITY = 'Guarapuava,BR';
 

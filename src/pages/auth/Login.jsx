@@ -16,18 +16,14 @@ const Login = () => {
       return;
     }
 
-    // Recupera os usuários armazenados no localStorage
     const users = JSON.parse(localStorage.getItem('users') || '[]');
 
-    // Verifica se o e-mail e senha existem entre os usuários cadastrados
     const user = users.find(user => user.email === email && user.password === password);
 
     if (user) {
-      // Armazena o token e os dados do usuário no localStorage
       localStorage.setItem('token', 'token-simulado-12345');
       localStorage.setItem('user', JSON.stringify({ email, nickname: user.nickname }));
 
-      // Redireciona para a página de produtos
       navigate('/produtos');
     } else {
       setError('Credenciais inválidas');

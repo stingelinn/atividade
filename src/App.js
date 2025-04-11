@@ -10,7 +10,6 @@ import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
 
 function App() {
-  // Verifica tanto 'token' quanto 'user' para maior confiabilidade
   const isAuthenticated = localStorage.getItem('token') !== null && 
                          localStorage.getItem('user') !== null;
 
